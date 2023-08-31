@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Slideshow Card with Bootstrap</title>
+    <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="CSS/styles.css">
+
+</head>
+<body>
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+
+        <div class="carousel-controls">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" style="background-image: url(Img/TechnologyDay.jpg);"></li>
+                <li data-target="#carousel" data-slide-to="1" style="background-image: url(Img/Indaba.jpg);"></li>
+                <li data-target="#carousel" data-slide-to="2" style="background-image: url(Img/LiFECampaign.jpg);"></li>
+                <li data-target="#carousel" data-slide-to="3" style="background-image: url(Img/TechnologyDay_2.jpg);"></li>
+            </ol>
+
+            <a class="carousel-control-prev" role="button" data-slide="prev" href="#carousel">
+                <img src="Img/left-arrow.svg" alt="Previous">
+            </a>
+            <a class="carousel-control-next" role="button" data-slide="next" href="#carousel">
+                <img src="Img/right-arrow.svg" alt="Next">
+            </a>
+
+        </div>
+
+        <!--<div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url(Img/TechnologyDay.jpg); height: 500px; width: 100%;">
+
+            </div>
+
+            <div class="carousel-item" style="background-image: url(Img/Indaba.jpg); height: 500px; width: 100%;">
+
+            </div>
+
+            <div class="carousel-item" style="background-image: url(Img/LiFECampaign.jpg); height: 500px; width: 100%">
+
+            </div>
+            <div class="carousel-item" style="background-image: url(Img/TechnologyDay_2.jpg); height: 500px; width: 100%">
+
+            </div>
+        </div>-->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="Img/TechnologyDay.jpg" alt="Technology Day" style="height: 500px; width: 100%;" />
+            </div>
+
+            <div class="carousel-item">
+                <img src="Img/Indaba.jpg" alt="Indaba" style="height: 500px; width: 100%;" />
+            </div>
+
+            <div class="carousel-item">
+                <img src="Img/LiFECampaign.jpg" alt="LiFE Campaign" style="height: 500px; width: 100%;" />
+            </div>
+
+            <div class="carousel-item">
+                <img src="Img/TechnologyDay_2.jpg" alt="Technology Day 2" style="height: 500px; width: 100%;" />
+            </div>
+        </div>
+
+
+    </div>
+    <script src="Js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

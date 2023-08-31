@@ -1,0 +1,41 @@
+﻿/* Styling for the buttons */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Styling for the containers */
+.Bcontainer {
+    display: none;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 300px;
+    opacity: 0; /* Start with 0 opacity for the fade-in animation */
+    transition: opacity 0.5s ease;
+}
+
+/* Styling for the image */
+.person-image {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Animation class for fade-in effect */
+.fade-in {
+    opacity: 1;
+}
+
+/* Animation class for fade-out effect */
+.fade-out {
+    opacity: 0;
+}

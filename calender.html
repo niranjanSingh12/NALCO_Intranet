@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link href="css/dycalendar.css" rel="stylesheet" />
+    <link href="css/calendar.css" rel="stylesheet" />
+
+    <!--<link rel="stylesheet" href="dycalendar.css">
+    <link rel="stylesheet" href="calendar.css">-->
+</head>
+<body>
+    <!-- <h1>hello</h1> -->
+    
+            <div class="container">
+                <div id="dycalendar"></div>
+
+            </div>
+     
+    <script src="js/dycalendar.js"></script>
+    <!--<script src="dycalendar.js"></script>-->
+    <script>
+        dycalendar.draw({
+            target: '#dycalendar',
+            type: 'month',
+            highlighttargetdate: true,
+            prevnextbutton: 'show'
+        })
+    </script>
+</body>
+</html>

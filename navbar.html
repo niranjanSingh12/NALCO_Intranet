@@ -1,0 +1,595 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="htmlcss bootstrap, multi level menu, submenu, treeview nav menu examples" />
+    <meta name="description"
+          content="Bootstrap 5 navbar multilevel treeview examples for any type of project, Bootstrap 5" />
+
+    <title>Demo - Bootstrap 5 multilevel dropdown submenu sample</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        /* ============ desktop view ============ */
+        @media all and (min-width: 992px) {
+
+            .dropdown-menu li {
+                position: relative;
+            }
+
+            .dropdown-menu .submenu {
+                display: none;
+                position: absolute;
+                left: 100%;
+                top: -7px;
+            }
+
+            .dropdown-menu .submenu-left {
+                right: 100%;
+                left: auto;
+            }
+
+            .dropdown-menu > li:hover {
+                background-color: #f1f1f1
+            }
+
+                .dropdown-menu > li:hover > .submenu {
+                    display: block;
+                }
+        }
+
+        /* ============ desktop view .end// ============ */
+
+        /* ============ small devices ============ */
+        @media (max-width: 991px) {
+
+            .dropdown-menu .dropdown-menu {
+                margin-left: 0.7rem;
+                margin-right: 0.7rem;
+                margin-bottom: .5rem;
+            }
+        }
+
+        /* ============ small devices .end// ============ */
+    </style>
+
+
+    <script type="text/javascript">
+		//	window.addEventListener("resize", function() {
+		//		"use strict"; window.location.reload();
+		//	});
+
+
+		document.addEventListener("DOMContentLoaded", function () {
+
+
+			/////// Prevent closing from click inside dropdown
+			document.querySelectorAll('.dropdown-menu').forEach(function (element) {
+				element.addEventListener('click', function (e) {
+					e.stopPropagation();
+				});
+			})
+
+
+
+			// make it as accordion for smaller screens
+			if (window.innerWidth < 992) {
+
+				// close all inner dropdowns when parent is closed
+				document.querySelectorAll('.navbar .dropdown').forEach(function (everydropdown) {
+					everydropdown.addEventListener('hidden.bs.dropdown', function () {
+						// after dropdown is hidden, then find all submenus
+						this.querySelectorAll('.submenu').forEach(function (everysubmenu) {
+							// hide every submenu as well
+							everysubmenu.style.display = 'none';
+						});
+					})
+				});
+
+				document.querySelectorAll('.dropdown-menu a').forEach(function (element) {
+					element.addEventListener('click', function (e) {
+
+						let nextEl = this.nextElementSibling;
+						if (nextEl && nextEl.classList.contains('submenu')) {
+							// prevent opening link if link needs to open dropdown
+							e.preventDefault();
+							console.log(nextEl);
+							if (nextEl.style.display == 'block') {
+								nextEl.style.display = 'none';
+							} else {
+								nextEl.style.display = 'block';
+							}
+
+						}
+					});
+				})
+			}
+			// end if innerWidth
+
+		});
+	// DOMContentLoaded  end
+    </script>
+
+</head>
+
+<body>
+
+
+
+
+
+    <!-- ============= COMPONENT ============== -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">राजभाषा</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <ul class="navbar-nav">
+                    <!-- <li class="nav-item active"> <a class="nav-link" href="#">Home </a> </li>
+                    <li class="nav-item"><a class="nav-link" href="#"> About </a></li> -->
+                    <!-- Applications Dropdown -->
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Applications </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"> Nalco Applications </a></li>
+                            <li><a class="dropdown-item" href="#"> GHRS </a></li>
+                            <li><a class="dropdown-item" href="#"> Visitor Gate Pass </a></li>
+                            <li><a class="dropdown-item" href="#"> Find a Nalconian </a></li>
+                            <li><a class="dropdown-item" href="#"> My Data </a></li>
+                            <li><a class="dropdown-item" href="#"> Exec. Appraisal </a></li>
+                            <li><a class="dropdown-item" href="#"> System Maint. Call </a></li>
+                            <li><a class="dropdown-item" href="#"> Nalco Library </a></li>
+                            <li><a class="dropdown-item" href="#"> Lotus Notes </a></li>
+                            <li><a class="dropdown-item" href="#"> Nalco Live Tenders - Login </a></li>
+                            <li><a class="dropdown-item" href="#"> Property Returns </a></li>
+                            <li><a class="dropdown-item" href="#"> eGreetings </a></li>
+                            <li><a class="dropdown-item" href="#"> Contract Labour Mgmt </a></li>
+                            <li><a class="dropdown-item" href="#"> Compliance Management </a></li>
+                            <li><a class="dropdown-item" href="#"> Vigilance Complaint Lodging </a></li>
+                            <li>
+                                <a class="dropdown-item" href="#"> E Office &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">eOffice (Production)</a></li>
+                                    <li><a class="dropdown-item" href="#">eOffice Demo</a></li>
+                                    <li><a class="dropdown-item" href="#">eOffice Documents </a></li>
+                                    <!-- <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Multi level 1</a></li>
+                                            <li><a class="dropdown-item" href="#">Multi level 2</a></li>
+                                        </ul>
+                                    </li> -->
+                                    <!-- <li><a class="dropdown-item" href="#">Submenu item 4</a></li>
+                                    <li><a class="dropdown-item" href="#">Submenu item 5</a></li> -->
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Policies Dropdown -->
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Policies </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"> Corporate Vision, Mission & Core values </a></li>
+                            <li><a class="dropdown-item" href="#"> Quality Policy </a></li>
+                            <li><a class="dropdown-item" href="#"> Environment Policy </a></li>
+                            <li><a class="dropdown-item" href="#"> Energy Policy </a></li>
+                            <li><a class="dropdown-item" href="#"> Accounting Policy </a></li>
+                            <li><a class="dropdown-item" href="#"> OHS Policy </a></li>
+                            <li><a class="dropdown-item" href="#"> SA Policy </a></li>
+                            <li>
+                                <a class="dropdown-item" href="#"> HR &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">HR Vision & Mission</a></li>
+                                    <li><a class="dropdown-item" href="#">Company You Keep</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">eOffice Documents &raquo;</a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Multi level 1</a></li>
+                                            <li><a class="dropdown-item" href="#">Multi level 2</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- <li><a class="dropdown-item" href="#">Submenu item 4</a></li>
+                                    <li><a class="dropdown-item" href="#">Submenu item 5</a></li> -->
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> IT Policies &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="#">IT Security Policy &raquo;</a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">English</a></li>
+                                            <li><a class="dropdown-item" href="#">Hindi</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">IT Resource Allocation Policy</a></li>
+                                    <li><a class="dropdown-item" href="#">IT Security Guideline</a></li>
+                                    <li><a class="dropdown-item" href="#">IT Acceptable Use Policy</a></li>
+                                    <li><a class="dropdown-item" href="#">E-mail ID Nomenclature</a></li>
+                                    <li><a class="dropdown-item" href="#">Nalco Cyber Security Guidelines</a></li>
+                                    <li><a class="dropdown-item" href="#">Dos and Don'ts for Computer Users</a></li>
+                                    <li><a class="dropdown-item" href="#">Password Policy(Lotus)</a></li>
+
+                                    <!-- <li><a class="dropdown-item" href="#">Submenu item 4</a></li>
+                                    <li><a class="dropdown-item" href="#">Submenu item 5</a></li> -->
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#"> Whistle Blower &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Whistle Blower Policy(English)</a></li>
+                                    <li><a class="dropdown-item" href="#">Whistle Blower Policy(English)</a></li>
+                                    <!-- <li><a class="dropdown-item" href="#">Submenu item 4</a></li>
+                                    <li><a class="dropdown-item" href="#">Submenu item 5</a></li> -->
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <!-- Manuals Dropdown -->
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Manuals </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"> HR Manual </a></li>
+                            <li><a class="dropdown-item" href="#"> Purchase manual </a></li>
+                            <li><a class="dropdown-item" href="#"> Contract Manual </a></li>
+                            <li><a class="dropdown-item" href="#"> Capital Budget </a></li>
+                            <li><a class="dropdown-item" href="#"> Stores Manual </a></li>
+                            <li><a class="dropdown-item" href="#"> Consultant Guideline </a></li>
+                            <li><a class="dropdown-item" href="#"> Annual Reports </a></li>
+                        </ul>
+                    </li>
+
+
+                    <!-- Forms Dropdown -->
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Forms </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"> PESB Appraisal </a></li>
+                            <li><a class="dropdown-item" href="#"> Peon Book </a></li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Leave &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Leave Encashment</a></li>
+                                    <li><a class="dropdown-item" href="#">Leave Application</a></li>
+                                    <li><a class="dropdown-item" href="#">Special Disability Leave </a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Medical &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Medical Claim(NT)</a></li>
+                                    <li><a class="dropdown-item" href="#">Medical Claim(Tx)</a></li>
+                                    <li><a class="dropdown-item" href="#">Accident Report </a></li>
+                                    <li><a class="dropdown-item" href="#">PME Requisition Form </a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Telephone &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Telephone Bill Cliam</a></li>
+                                    <li><a class="dropdown-item" href="#">Phone(Non-Exe)</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Tour &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Tour Prog-cum-adv</a></li>
+                                    <li><a class="dropdown-item" href="#">TA Bills</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#"> LTC Form </a></li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Loan &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Special Advance</a></li>
+                                    <li><a class="dropdown-item" href="#">Mortgage Deed Form For Motor Vehicle</a></li>
+                                    <li><a class="dropdown-item" href="#">Surety Bond For MVA(Appendix-B)</a></li>
+                                    <li><a class="dropdown-item" href="#">Appendix-D (For Drawl Of MVA)</a></li>
+                                    <li><a class="dropdown-item" href="#">Composite Personal Advance Surety Bond</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> PF &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">PF Nomination</a></li>
+                                    <li><a class="dropdown-item" href="#">PF Settlement-Emp</a></li>
+                                    <li><a class="dropdown-item" href="#">PF Settlement Nominee</a></li>
+                                    <li><a class="dropdown-item" href="#">PF NR Loan(Land-House)</a></li>
+                                    <li><a class="dropdown-item" href="#">EPFO's Declaration Form(Form 11)</a></li>
+                                    <li><a class="dropdown-item" href="#">Form 10D(Pension)</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> NPS &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">NPS(CSRF1) Registration</a></li>
+                                    <li><a class="dropdown-item" href="#">NPS Membership</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Application / NOC / Declaration &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Perquisite Forms</a></li>
+                                    <li><a class="dropdown-item" href="#">Inclusion of Dependant family members</a></li>
+                                    <li><a class="dropdown-item" href="#">Passport NOC</a></li>
+                                    <li><a class="dropdown-item" href="#">Application for Gratuity</a></li>
+                                    <li><a class="dropdown-item" href="#">Marriage Declaration Form</a></li>
+                                    <li><a class="dropdown-item" href="#">Application of Paternity Leave</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">HRA Reimbursement &raquo;</a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Annexure-B</a></li>
+                                            <li><a class="dropdown-item" href="#">Annexure-C</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Details of Foreign Visits</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Nomination &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Membership for Executive Family Welfare Scheme and Nomination</a></li>
+                                    <li><a class="dropdown-item" href="#">Membership for NEFFARS and Nomination</a></li>
+                                    <li><a class="dropdown-item" href="#">Membership for Benevolent Fund and Nomination</a></li>
+                                    <li><a class="dropdown-item" href="#">Nomination for Group Insurance Scheme</a></li>
+                                    <li><a class="dropdown-item" href="#">Nomination for Gratuity</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Income Tax &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Itax Proposal</a></li>
+                                    <li><a class="dropdown-item" href="#">Income Tax HB Proposal</a></li>
+                                    <li><a class="dropdown-item" href="#">IT 80U Declaration</a></li>
+                                    <li><a class="dropdown-item" href="#">Declaration For Tution Fees</a></li>
+                                    <li><a class="dropdown-item" href="#">Declaration for IT Exemption on LTC</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Requisition / Booking &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Request for Guest House Accommodation at S&P Complex</a></li>
+                                    <li><a class="dropdown-item" href="#">Request for Guest House accommodation at Bhubaneswar</a></li>
+                                    <li><a class="dropdown-item" href="#">Vehicle Requisition</a></li>
+                                    <li><a class="dropdown-item" href="#">Air Ticket Booking</a></li>
+                                    <li><a class="dropdown-item" href="#">Software Requisition</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Contract Cell &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">CONTRACT INITIATION FORM</a></li>
+                                    <li><a class="dropdown-item" href="#">Justification of the estimate</a></li>
+                                    <li><a class="dropdown-item" href="#">Inpriciple approval of CMD</a></li>
+                                    <li><a class="dropdown-item" href="#">Work Completion Certificate</a></li>
+                                    <li><a class="dropdown-item" href="#">No Due Certificate</a></li>
+                                    <li><a class="dropdown-item" href="#">No Claim Certificate</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Purchase &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Inpriciple approval of CMD</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Training &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">External Trg Feedback</a></li>
+                                    <li><a class="dropdown-item" href="#">Internship Application</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Systems &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">ISO 27001 Forms</a></li>
+                                    <li><a class="dropdown-item" href="#">SAP USER CREATION,MODIFICATION REQUEST FORM</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Bilingual Templates &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">CO Letter Head</a></li>
+                                    <li><a class="dropdown-item" href="#">IOM of Corporate Office</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> NDA Format &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">PDF</a></li>
+                                    <li><a class="dropdown-item" href="#">Word Doc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> DSC Application Form &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">DSC Application(Sify)</a></li>
+                                    <li><a class="dropdown-item" href="#">DSC Application(SOP)</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#"> Application for C-Type Quarter </a></li>
+                            <li><a class="dropdown-item" href="#"> Application for D-Type Quarter </a></li>
+
+                        </ul>
+                    </li>
+
+                    <!-- Download Dropdown -->
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Downloads </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"> Medical Empanelled List </a></li>
+                            <li><a class="dropdown-item" href="#"> Find a Nalconinan(Old ver.) </a></li>
+                            <li><a class="dropdown-item" href="#"> Parichaya </a></li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Softwares &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">AnyDesk</a></li>
+                                    <li><a class="dropdown-item" href="#">Acrobat Reader</a></li>
+                                    <li><a class="dropdown-item" href="#">Chrome Browser</a></li>
+                                    <li><a class="dropdown-item" href="#">Cleanup</a></li>
+                                    <li><a class="dropdown-item" href="#">Cute PDF Writer</a></li>
+                                    <li><a class="dropdown-item" href="#">dopdf</a></li>
+                                    <li><a class="dropdown-item" href="#">Flashplayer</a></li>
+                                    <li><a class="dropdown-item" href="#">Java</a></li>
+                                    <li><a class="dropdown-item" href="#">Hindi Language</a></li>
+                                    <li><a class="dropdown-item" href="#">Lotus Notes</a></li>
+                                    <li><a class="dropdown-item" href="#">Mozilla Firefox</a></li>
+                                    <li><a class="dropdown-item" href="#">NALCO PDF Utility</a></li>
+                                    <li><a class="dropdown-item" href="#">Trend Micro Client</a></li>
+                                    <li><a class="dropdown-item" href="#">Cisco VPN</a></li>
+                                    <li><a class="dropdown-item" href="#">Polycom VC Screen share</a></li>
+                                    <li><a class="dropdown-item" href="#">Polycom VC Desktop Client</a></li>
+                                    <li><a class="dropdown-item" href="#">SAP Client</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#"> Lokpal Assets & Liabilities </a></li>
+                            <li><a class="dropdown-item" href="#"> Information Security Awareness </a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Department Dropdown -->
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Department </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"> HRD </a></li>
+                            <li><a class="dropdown-item" href="#"> Finanace </a></li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Systems / ERP &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Systems/IT</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">SAP &raquo;</a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">SAP Password Reset</a></li>
+                                            <li><a class="dropdown-item" href="#">SAP Password Reset User Manual</a></li>
+                                            <li><a class="dropdown-item" href="#">ERP @ Nalco</a></li>
+                                            <li><a class="dropdown-item" href="#">ERP Portal</a></li>
+                                            <li><a class="dropdown-item" href="#">SRM7 Production</a></li>
+                                            <li><a class="dropdown-item" href="#">SRM7 Quality</a></li>
+                                            <li><a class="dropdown-item" href="#">SRM7 Development</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#"> Raj bhasa(राजभाषा) </a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Usefull Links -->
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Useful Links </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="#"> NALCO's Portal for Apps - Outside Access &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Hamesha Nalconian</a></li>
+                                    <li><a class="dropdown-item" href="#">CLMS Portal</a></li>
+                                    <li><a class="dropdown-item" href="#">NALCO for MSE</a></li>
+                                    <li><a class="dropdown-item" href="#">CSR</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"> GST &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Overview</a></li>
+                                    <li><a class="dropdown-item" href="#">LAW and procedures</a></li>
+                                    <li><a class="dropdown-item" href="#">Benefits</a></li>
+                                    <li><a class="dropdown-item" href="#">Registration</a></li>
+                                    <li><a class="dropdown-item" href="#">IGST</a></li>
+                                    <li><a class="dropdown-item" href="#">Meaning and Scope of Supply</a></li>
+                                    <li><a class="dropdown-item" href="#">Imports</a></li>
+                                    <li><a class="dropdown-item" href="#">Jobwork</a></li>
+                                    <li><a class="dropdown-item" href="#">Input tax credit mechanism</a></li>
+                                    <li><a class="dropdown-item" href="#">Transition Provisions</a></li>
+                                    <li><a class="dropdown-item" href="#">Returns</a></li>
+                                    <li><a class="dropdown-item" href="#">Recovery of Tax</a></li>
+                                    <li><a class="dropdown-item" href="#">Refunds</a></li>
+                                    <li><a class="dropdown-item" href="#">Accounts and Records</a></li>
+                                    <li><a class="dropdown-item" href="#">TCS-Mechanism</a></li>
+                                    <li><a class="dropdown-item" href="#">Inspection Search Seizure Arrest</a></li>
+                                    <li><a class="dropdown-item" href="#">GST Practitioners</a></li>
+                                    <li><a class="dropdown-item" href="#">Provisional GST ID</a></li>
+                                    <li><a class="dropdown-item" href="#">FAQ(Second Edition)</a></li>
+                                    <li><a class="dropdown-item" href="#">FAQ on Migration</a></li>
+                                    <li><a class="dropdown-item" href="#">Notification 10</a></li>
+                                    <li><a class="dropdown-item" href="#">Notification 11</a></li>
+                                    <li><a class="dropdown-item" href="#">Notification 12</a></li>
+                                    <li><a class="dropdown-item" href="#">Goods Rates</a></li>
+                                    <li><a class="dropdown-item" href="#">Services Rates</a></li>
+                                    <li><a class="dropdown-item" href="#">Importers & Exporters</a></li>
+                                    <li><a class="dropdown-item" href="#">FAQ on exports</a></li>
+                                    <li><a class="dropdown-item" href="#">Sectoral Series</a></li>
+                                    <li><a class="dropdown-item" href="#">LD Treatment</a></li>
+                                    <li><a class="dropdown-item" href="#">Metal Transportation</a></li>
+                                    <li><a class="dropdown-item" href="#">Change in business process</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#"> NALCO Learning Portal </a></li>
+                            <li><a class="dropdown-item" href="#"> Nalco News </a></li>
+                            <li><a class="dropdown-item" href="#"> Bureau of Indian Standards </a></li>
+                            <li><a class="dropdown-item" href="#"> Indian Government </a></li>
+                            <li><a class="dropdown-item" href="#"> knowledge management portal for CPSEs </a></li>
+                            <li><a class="dropdown-item" href="#"> The Gazette of India </a></li>
+                            <li><a class="dropdown-item" href="#"> DPE </a></li>
+                            <li><a class="dropdown-item" href="#"> Income tax e-Filing </a></li>
+                            <li><a class="dropdown-item" href="#"> Login to NPS </a></li>
+                            <li><a class="dropdown-item" href="#"> Indian Rail Info </a></li>
+                            <li><a class="dropdown-item" href="#"> IRCTC </a></li>
+                            <li><a class="dropdown-item" href="#"> Flight Booking </a></li>
+                            <li><a class="dropdown-item" href="#"> Online SBI </a></li>
+                        </ul>
+                    </li>
+
+
+
+                </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Dropdown right </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a class="dropdown-item" href="#"> Dropdown item 1</a></li>
+                            <li><a class="dropdown-item" href="#"> Dropdown item 2 </a></li>
+                            <li>
+                                <a class="dropdown-item" href="#"> Dropdown item 3 &raquo; </a>
+                                <ul class="submenu submenu-left dropdown-menu">
+                                    <li><a class="dropdown-item" href="">Submenu item 1</a></li>
+                                    <li><a class="dropdown-item" href="">Submenu item 2</a></li>
+                                    <li><a class="dropdown-item" href="">Submenu item 3</a></li>
+                                    <li><a class="dropdown-item" href="">Submenu item 4</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="#"> Dropdown item 4 </a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+    </nav>
+
+    <!-- ============= COMPONENT END// ============== -->
+
+
+
+
+
+</body>
+
+</html>
